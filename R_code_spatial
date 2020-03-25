@@ -1,0 +1,21 @@
+# R spaziale: funzioni spaziali in Ecologia del Paesaggio
+
+install.packages("sp")
+
+# con library (sp) richiamiamo il pacchetto
+library(sp)
+
+# inseriamo i dati scrivendo data e il nome di un data set
+data(meuse)
+
+# solo parte iniziale di meuse
+head(meuse)
+
+#plot tra variabile cadmium e lead
+plot(meuse$cadmium,meuse$lead)
+
+#attach per allegare dataframe???? non mi da risultato
+attach(meuse)
+
+
+
