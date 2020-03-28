@@ -1,0 +1,48 @@
+install.packages("sp")
+
+#inserisci library (=modalità di rappresentazione dei dati?)
+library(sp)
+
+#inserire dati da utilizzare
+data(meuse)
+head(meuse)
+
+#coordinate del dataset
+coordinates(meuse)=~x+y
+
+#inserire spazialmente i dati di zinco
+spplot(meuse,"zinc")
+
+#spplot dei dati di rame
+ssplot(meuse,"copper")
+
+#visulaizzare altri nomi da utilizzare da meuse
+names(meuse)
+
+#esprimere i dati come bubbles
+bubble(meuse,"zinc")
+
+bubble(meuse,"copper",col="red",cex=2)
+#errore in cex: da usare per altri argomenti)
+
+#creazione di un array: con nome della x (foram) e nome della y (carbon),poi messi in relazione con plot
+foram <- c(10, 20, 35, 55, 67, 80)
+carbon <- c(5, 15, 30, 70, 85, 99)
+plot(foram, carbon, col="green", cex=2, pch=19)
+
+
+ciao <- c(2,4,7)
+bye <- c(5,6,7)
+plot(ciao,bye, col="yellow", cex=3, pch=16)
+
+#creazione dataframe, relazione tra variabili, modifica etichette x e y
+Studenti <- data.frame ("nome"=c("Luca","Giada","Elisa"),"Età"=c(20,26,23))
+Studenti
+plot(Studenti$nome,Studenti$Età)
+plot(Studenti$nome,Studenti$Età,xlab="Name",ylab="Age")
+
+#Dati dall'esterno sul covid-19
+#creare cartella su Windows: C:/lab
+#setwd("C:/lab") # Windows
+#leggere la tabella
+covid <- read.table("covid_agg.csv",head=TRUE)
