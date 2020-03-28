@@ -25,14 +25,30 @@ plot(cadmium,lead)
 #cambiare etichette del grafico, e titolo
 plot(cadmium,lead,xlab="rame",ylab="zinc",main="grafico")
 
+#multiframe o multipanel, par consente di eseguire tra parentesi diversi parametri come il multiframe MF), il primo numero rappresenta la riga e il secondo la colonna. 
+par(mfrow=c(1,2))
 
+#invertire riga/colonna in colonna/riga. 
+par(mfrow=c(2,1))
+par(mfrow=c(2,3))
+#2 indica che viene dimezzata la riga rispetto al valore iniziale, è come se fosse 1 mezzo, mentre 3 indica che la colonna viene resa 1 terzo rispetto l'originale
 
+#multiframe automatico
+install.packages("GGally")
+library(GGally)
+(dà errore, richiede che si elimini un file della win-library precedente per fare installare la GGally)
 
+meuse
+head(meuse)
 
+coordinates(meuse)=~x+y
+#errore???
 
+plot(meuse)
+#grafico strano??
 
-
-
+#funzione spplot per plottare o organizzare i dati spazialmente
+spplot(meuse,"zinc")
 
 install.packages(rgdal)
 install.packages(raster)
