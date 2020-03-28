@@ -14,8 +14,29 @@ head(meuse)
 #plot tra variabile cadmium e lead
 plot(meuse$cadmium,meuse$lead)
 
-#attach per allegare dataframe???? non mi da risultato
+#attach per allegare dataframe
 attach(meuse)
+
+plot(cadmium,lead)
+
+#freccia in alto per riprendere quanto scritto prima
+plot(cadmium,lead)
+
+#cambiare etichette del grafico, e titolo
+plot(cadmium,lead,xlab="rame",ylab="zinc",main="grafico")
+
+
+
+
+
+
+
+
+
+
+install.packages(rgdal)
+install.packages(raster)
+
 
 
 
