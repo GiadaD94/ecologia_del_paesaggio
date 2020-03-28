@@ -36,4 +36,5 @@ pairs(~cadmium+copper+lead,data=meuse)
 pairs(meuse[,3:6])
 pairs(meuse[,3:6],col="green")
 
-
+#main"nomegrafico"
+main=primo pairs
