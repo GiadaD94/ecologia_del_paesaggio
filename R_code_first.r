@@ -24,7 +24,7 @@ summary(meuse)
 #plot è funzione per mettere in relazione delle variabili, all'interno di meuse in questo caso e si esprime con il dollaro $
 plot(meuse$cadmium,meuse$lead)
 
-
+#allegare dataframe permette di non usare piu meuse$
 attach(meuse)
 plot(cadmium,lead)
 
