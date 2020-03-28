@@ -13,6 +13,14 @@ meuse
 # head è funzione per inserire solo la parte iniziale di un data set, la testa
 head(meuse)
 
+#nomi delle variabili del data set
+names(meuse)
+
+#riassunto
+summary(meuse)
+
+
+
 #plot è funzione per mettere in relazione delle variabili, all'interno di meuse in questo caso e si esprime con il dollaro $
 plot(meuse$cadmium,meuse$lead)
 
@@ -24,5 +32,8 @@ plot(cadmium,lead)
 plot(cadmium,lead,pch=17,cex=3,col="yellow")
 
 # pairs è funzione che comprende tanti plot ovvero fra tutte le variabili possibili del data set, si apre un subset con la quadra seguita dalla virgola, i due punti indicano fino a che punto si arriva
+pairs(~cadmium+copper+lead,data=meuse)
 pairs(meuse[,3:6])
 pairs(meuse[,3:6],col="green")
+
+
