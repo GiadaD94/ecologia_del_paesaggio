@@ -16,7 +16,7 @@ spplot(meuse,"zinc")
 #spplot dei dati di rame
 ssplot(meuse,"copper")
 
-#visulaizzare altri nomi da utilizzare da meuse
+#visualizzare altri nomi da utilizzare da meuse
 names(meuse)
 
 #esprimere i dati come bubbles
@@ -43,6 +43,11 @@ plot(Studenti$nome,Studenti$Età,xlab="Name",ylab="Age")
 
 #Dati dall'esterno sul covid-19
 #creare cartella su Windows: C:/lab
-#setwd("C:/lab") # Windows
+#setwd("C:/lab") per Windows
 #leggere la tabella
+
+covid <- read.table
 covid <- read.table("covid_agg.csv",head=TRUE)
+head(covid)
+
+plot(covid$country,covid$cases)
