@@ -10,5 +10,107 @@ library(spatstat)
 
 
 #setwd("~:/lab/") per windows   ?????
-
 setwd("C/lab")
+
+#importare dati
+covid <- read.table("covid_agg.csv", head=T)
+head(covid)
+
+plot(covid$country,covid$cases) 
+
+attach(covid) 
+
+plot(country,cases)
+
+#modifica delle etichette, funzione las = per costa sta ?????
+#parallel labels
+plot(covid$country,covid$cases,las=0)
+#horizontal labels
+plot(covid$country,covid$cases,las=1)
+#perpendicular labels
+plot(covid$country,covid$cases,las=2)
+#vertical labels
+plot(covid$country,covid$cases,las=3)
+
+plot(covid$country,covid$cases,las=3,cex.lab=0.5, cex.axis=0.5)
+
+#ggplot2
+data(mpg)
+head(mpg)
+
+#inserimento dati, funzione aes= per cosa sta ??????????, tipo di geometria (a punti, linee, poligoni)
+ggplot(mpg,aes(x=displ,y=hwy)) + geom_point()
+ggplot(mpg,aes(x=displ,y=hwy)) + geom_line()
+ggplot(mpg,aes(x=displ,y=hwy)) + geom_polygon()
+
+#ggplot di covid, funzione size= per cosa sta ????????
+ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_point()
+ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_polygon()
+
+#density ?????
+#creare dataset for spatstat, funzioni ppp e c??????
+attach(covid)
+covids <- ppp(lon, lat, c(-180,180), c(-90,90))
+
+d <- density(covids)
+
+plot(d)
+points(covids)
+
+#save the .RData, salvando area di lavoro nella cartella SPATIALDATA con il nome point_pattern.RData
+
+setwd("~/lab")   errore: non posso cambiare directory di lavoro
+
+load("point_pattern.RData")
+
+#ls ????
+ls()
+
+plot(d)
+
+#modificare palette grafico
+cl <- colorRampPalette(c("yellow","orange","red")) (100)
+plot(d, col=cl)
+
+#plot della mappa della densità dal blu al verde
+cl <- colorRampPalette(c("blue","green")) (100)
+cl <- colorRampPalette(c("blue","light blue","light green","green")) (100)
+plot(d, col=cl)
+
+install.packages("rgdal")
+library(rgdal)
+
+coastlines <- readOGR("ne_10m_coastline.shp")   errore  cannot open data source???
+#plot coastlines e funzione add = ???????
+plot(coastlines, add=T)
+
+#plot della mappa di densità con modifiche di palette e aggiunta di coastlines
+cl <- colorRampPalette(c("blue","light blue","light green","yellow")) (100)
+plot(d, col=cl)
+plot(coastlines, add=T, col="yellow")
+
+cl2 <- colorRampPalette(c("red","orange","yellow","green", "blue")) (800)
+plot(d, col=cl2)
+plot(coastlines, add=T)
+
+cl3 <- colorRampPalette(c("green", "violet", "blue")) (200)
+plot(d, col=cl3)
+plot(coastlines, add=T)
+
+cl4 <- colorRampPalette(c("violet","yellow","green"))(100)
+plot(d, col=cl4)
+plot(coastlines, add=T)
+
+cl5 <- colorRampPalette(c("darkcyan", "purple", "red")) (200) 
+plot(d, col=cl5)
+plot(coastlines, add=T)
+
+cl6 <- colorRampPalette(c("darkcyan", "purple", "red")) (200) 
+plot(d, col=cl6)
+plot(coastlines, add=T)
+
+cl7<-colorRampPalette(c("white","blue","green","red","orange","yellow")) (150)
+plot(d, col=cl7)
+plot(coastlines, add=T)
+
+
