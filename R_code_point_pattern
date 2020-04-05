@@ -1,0 +1,14 @@
+#codice per analizzare i pattern legati ai punti
+
+install.packages("ggplot2")
+install.packages("spatstat")
+
+#allego library
+
+library(ggplot2)
+library(spatstat)
+
+
+#setwd("~:/lab/") per windows   ?????
+
+setwd("C/lab")
