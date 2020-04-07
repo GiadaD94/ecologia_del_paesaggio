@@ -1,0 +1,19 @@
+#carico lab come working directory
+setwd("C:/lab/)
+
+#installazione pacchetti
+install.packages("raster") 
+install.packages("rgdal") 
+install.packages("ggplot2")
+install.packages("RStoolbox")
+
+#carico dati dei pacchetti
+library(raster)
+library(rgdal)
+library(ggplot2)
+library(RStoolbox)
+
+# funzione BRICK per importare immagini satellitari con tutte le bande, riporto i nomi dei file scaricati nella cartella lab
+p224r63_2011 <- brick("p224r63_2011_masked.grd")
+
+Error in file(x, "rb") : non posso aprire questa connessione
