@@ -42,10 +42,10 @@ plot(Studenti$nome,Studenti$Età)
 plot(Studenti$nome,Studenti$Età,xlab="Name",ylab="Age")
 
 #Dati dall'esterno sul covid-19
-#creare cartella su Windows: C:/lab
-#setwd("C:/lab") per Windows
-#leggere la tabella
+#creare cartella su Windows: C:/lab, andando su questo pc, disco locale c, nuova cartella nominata lab, poi la richiamo in R con:
+setwd("C:/lab") per Windows
 
+#leggere la tabella
 covid <- read.table
 covid <- read.table("covid_agg.csv",head=TRUE)
 head(covid)
