@@ -43,12 +43,12 @@ ggplot(mpg,aes(x=displ,y=hwy)) + geom_point()
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_line()
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_polygon()
 
-#ggplot di covid, funzione size= per cosa sta ????????
+#ggplot di covid, funzione size=  crea legenda ????????
 ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_point()
 ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_polygon()
 
 #density ?????
-#creare dataset for spatstat, funzioni ppp e c??????
+#creare dataset for spatstat, utilizzare funzioni ppp per creare a spatial point pattern, c sta per colonna
 attach(covid)
 covids <- ppp(lon, lat, c(-180,180), c(-90,90))
 
@@ -57,7 +57,7 @@ d <- density(covids)
 plot(d)
 points(covids)
 
-#save the .RData, salvando area di lavoro nella cartella SPATIALDATA con il nome point_pattern.RData
+#save the .RData, salvando area di lavoro nella cartella lab con il nome point_pattern.RData
 
 setwd("C:/lab") 
 
