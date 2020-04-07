@@ -9,7 +9,7 @@ library(ggplot2)
 library(spatstat)
 
 
-#setwd("~:/lab/") per windows   ?????
+#setwd("~:/lab/") per windows
 setwd("C/lab")
 
 #importare dati
@@ -59,7 +59,7 @@ points(covids)
 
 #save the .RData, salvando area di lavoro nella cartella SPATIALDATA con il nome point_pattern.RData
 
-setwd("~/lab")   errore: non posso cambiare directory di lavoro
+setwd("C:/lab") 
 
 load("point_pattern.RData")
 
