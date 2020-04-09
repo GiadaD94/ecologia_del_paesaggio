@@ -22,7 +22,8 @@ attach(covid)
 
 plot(country,cases)
 
-#modifica delle etichette, funzione las = per costa sta ?????
+# modifica delle etichette, funzione las = valore numerico che indica l'orientamento delle etichette o altro testo aggiunto al plot
+# parallele all'asse ( 0), orizzontale (1), perpendicolare all'asse (2), verticale (3)
 #parallel labels
 plot(covid$country,covid$cases,las=0)
 #horizontal labels
