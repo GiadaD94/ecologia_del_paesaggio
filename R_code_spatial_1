@@ -41,11 +41,9 @@ library(GGally)
 meuse
 head(meuse)
 
-coordinates(meuse)=~x+y
-#errore???
+coordinates(meuse)=~x+y  (perchè inseriamo coordinate?)
 
 plot(meuse)
-#grafico strano??
 
 #funzione spplot per plottare o organizzare i dati spazialmente
 spplot(meuse,"zinc")
