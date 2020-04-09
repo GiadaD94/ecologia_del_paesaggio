@@ -33,22 +33,27 @@ plot(covid$country,covid$cases,las=2)
 #vertical labels
 plot(covid$country,covid$cases,las=3)
 
+# cex.axis = ingrandimento dell'annotazione degli assi rispetto al cex
+# cex.lab = ingrandimento delle etichette x e y rispetto al cex
 plot(covid$country,covid$cases,las=3,cex.lab=0.5, cex.axis=0.5)
+
 
 #ggplot2
 data(mpg)
 head(mpg)
 
-#inserimento dati, funzione aes= per cosa sta ??????????, tipo di geometria (a punti, linee, poligoni)
+#inserimento dati, funzione aes= funzione di quotazione, i suoi input sono quotati per essere valutati nel contesto dei dati. 
+è possibile denominare direttamente le variabili del dataframe
+# tipo di geometria (a punti, linee, poligoni)
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_point()
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_line()
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_polygon()
 
-#ggplot di covid, funzione size=  crea legenda ????????
+#ggplot di covid, funzione size= restituisce un vettore numerico di lunghezza (x) ????????
 ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_point()
 ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_polygon()
 
-#density ?????
+#density -> esprime la stima della densità di kernel
 #creare dataset for spatstat, utilizzare funzioni ppp per creare a spatial point pattern, c sta per colonna
 attach(covid)
 covids <- ppp(lon, lat, c(-180,180), c(-90,90))
@@ -64,7 +69,7 @@ setwd("C:/lab")
 
 load("point_pattern.RData")
 
-#ls ????
+#ls = è una funzione in R che elenca tutti gli oggetti nell'ambiente di lavoro
 ls()
 
 plot(d)
@@ -81,7 +86,7 @@ plot(d, col=cl)
 install.packages("rgdal")
 library(rgdal)
 
-coastlines <- readOGR("ne_10m_coastline.shp")   errore  cannot open data source???
+coastlines <- readOGR("ne_10m_coastline.shp")   
 #plot coastlines e funzione add = ???????
 plot(coastlines, add=T)
 
