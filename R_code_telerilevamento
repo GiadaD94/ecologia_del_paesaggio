@@ -13,7 +13,91 @@ library(rgdal)
 library(ggplot2)
 library(RStoolbox)
 
-# funzione BRICK per importare immagini satellitari con tutte le bande, riporto i nomi dei file scaricati nella cartella lab
+# funzione BRICK per importare immagini satellitari con tutte le bande (più layers da un singolo file)
+# riporto i nomi dei file scaricati nella cartella lab, l'estensione .grd indica che sono dati satellitari
 p224r63_2011 <- brick("p224r63_2011_masked.grd")
 
-Error in file(x, "rb") : non posso aprire questa connessione
+plot(p224r63_2011)
+
+# B1: blue
+# B2: green
+# B3: red
+# B4: near infrared (nir) 
+# B5: medium infrared
+# B6: thermal infrared
+# B7: medium infrared
+
+#modifica i grafici in scala nero-grigio
+cl <- colorRampPalette(c('black','grey','light grey'))(100)
+plot(p224r63_2011, col=cl)
+
+# low indica low amount of colours, sempre in scala grigi
+cllow <- colorRampPalette(c('black','grey','light grey'))(5)
+plot(p224r63_2011, col=cllow)
+
+# accorciare nome dei layers con funzione NAMES()
+names(p224r63_2011)
+# viene come risultato:  [1] "B1_sre" "B2_sre" "B3_sre" "B4_sre" "B5_sre" "B6_bt"  "B7_sre"
+
+#scegliamo scala colori dei grafici (b=blue)
+clb <- colorRampPalette(c('dark blue','blue','light blue'))(100)
+
+# plottiamo usando il nome accorciato B1_sre, con il simbolo $ che lega la banda al dataset
+plot(p224r63_2011$B1_sre, col=clb)
+
+# Exercise: plottare la banda dell'infrarosso (NIR) vicino con colorRampPalette che varia dal rosso, all'arancione, al giallo
+clnir <- colorRampPalette(c('red','orange','yellow'))(100)
+plot(p224r63_2011$B4_sre, col=clnir)
+
+## multiframe: creerà più grafici a confronto
+par(mfrow=c(2,2))
+
+# grafico in scala blu
+clb <- colorRampPalette(c('dark blue','blue','light blue'))(100)
+plot(p224r63_2011$B1_sre, col=clb)
+
+# grafico in scala rossa (B3)
+clr <- colorRampPalette(c('dark red','red','pink'))(100)
+plot(p224r63_2011$B3_sre, col=clr)
+
+# green
+clg <- colorRampPalette(c('dark green','green','light green'))(100) 
+plot(p224r63_2011$B2_sre, col=clg)
+
+# nir
+clnir <- colorRampPalette(c('red','orange','yellow'))(100)
+plot(p224r63_2011$B4_sre, col=clnir)
+
+
+## dev.off()  ???????
+
+# usiamo i tre colori naturali o bande (R, G, B) R = banda del rosso, G = banda del verde, B = banda del blu
+# B1: blue - 1   B2: green - 2   B3: red - 3   B4: near infrared (nir) - 4
+plotRGB(p224r63_2011,r=3,g=2,b=1)
+
+# stretch() always returns a vector of numerics
+# stretch_lst() returns a list
+# stretch_dfr() return data frame using row-binding
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+
+#usando colori vicino infrarosso
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+
+# salvataggio file
+pdf("primografico.pdf") oppure
+png("primografico.png")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+dev.off()
+
+# multiframe
+par(mfrow=c(2,1))
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+dev.off()
+
+# nir nella componente R(Red)
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+# Exercise: nir nella componente G(Green)
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
+# Exercise: nir nella componente B(Blue)
+plotRGB(p224r63_2011, r=3, g=2, b=4, stretch="Lin")
