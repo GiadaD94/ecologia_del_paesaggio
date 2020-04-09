@@ -32,6 +32,7 @@ par(mfrow=c(1,2))
 par(mfrow=c(2,1))
 par(mfrow=c(2,3))
 #2 indica che viene dimezzata la riga rispetto al valore iniziale, è come se fosse 1 mezzo, mentre 3 indica che la colonna viene resa 1 terzo rispetto l'originale
+# la funzione par imposta o regola i parametri di stampa
 
 #multiframe automatico
 install.packages("GGally")
