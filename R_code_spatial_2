@@ -1,6 +1,6 @@
 install.packages("sp")
 
-#inserisci library (=modalità di rappresentazione dei dati?)
+#inserisci library (=modalità di rappresentazione dei dati, la library richiama i dati del pacchetto)
 library(sp)
 
 #inserire dati da utilizzare
