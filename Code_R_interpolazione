@@ -41,8 +41,7 @@ par(mfrow=c(2,1))
 
 # densità
 cl5 <- colorRampPalette(c('cyan', 'purple', 'red')) (200) 
-plot(d, col=cl5, main="
-")
+plot(d, col=cl5, main="4")
 points(covids)
 coastlines <- readOGR("ne_10m_coastline.shp")
 plot(coastlines, add=T)
