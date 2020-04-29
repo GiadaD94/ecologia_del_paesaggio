@@ -1,0 +1,7 @@
+install.packages(c("RStoolbox","raster"))
+library(raster)
+
+install.packages("RStoolbox")
+library(RStoolbox)
+
+setwd("~/lab/")
