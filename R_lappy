@@ -1,0 +1,11 @@
+library(raster)
+setwd("~/lab/esa_no2")
+# put all files into the folder
+
+rlist=list.files(pattern=".png", full.names=T)
+
+#save raster into list
+#con lappy
+list_rast=lapply(rlist, raster)
+EN <- stack(list_rast)
+plot(EN)
