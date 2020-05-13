@@ -42,7 +42,7 @@ library(GGally)
 meuse
 head(meuse)
 
-coordinates(meuse)=~x+y  (perchè inseriamo coordinate?)
+coordinates(meuse)=~x+y  
 
 plot(meuse)
 
