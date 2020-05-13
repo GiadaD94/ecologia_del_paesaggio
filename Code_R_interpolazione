@@ -22,7 +22,7 @@ plot(coastlines, add=T)
 head(covid)
 marks(covids) <- covid$cases
 
-#funzione smooth ???????
+#funzione smooth 
 s <- Smooth(covids)
 plot(s)
 
@@ -33,7 +33,7 @@ points(covids)
 coastlines <- readOGR("ne_10m_coastline.shp")
 plot(coastlines, add=T)
 
-#numeri dei dati
+# numeri dei dati
 text(covids)
 
 # mappa finale
