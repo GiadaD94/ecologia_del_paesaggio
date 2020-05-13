@@ -11,38 +11,38 @@ data(meuse)
 # solo parte iniziale di meuse
 head(meuse)
 
-#plot tra variabile cadmium e lead
+# plot tra variabile cadmium e lead (elementi in meuse)
 plot(meuse$cadmium,meuse$lead)
 
-#attach per allegare dataframe
+# attach per allegare dataframe ed eliminare meuse$
 attach(meuse)
 
 plot(cadmium,lead)
 
-#freccia in alto per riprendere quanto scritto prima
+# freccia in alto per riprendere quanto scritto prima
 plot(cadmium,lead)
 
-#cambiare etichette del grafico, e titolo
+# cambiare etichette del grafico, e titolo con main
 plot(cadmium,lead,xlab="rame",ylab="zinc",main="grafico")
 
-#multiframe o multipanel, par consente di eseguire tra parentesi diversi parametri come il multiframe MF), il primo numero rappresenta la riga e il secondo la colonna. 
+# multiframe o multipanel, funzione par consente di eseguire tra parentesi diversi parametri come il multiframe (MF), il primo numero rappresenta la riga e il secondo la colonna. 
 par(mfrow=c(1,2))
 
-#invertire riga/colonna in colonna/riga. 
+# invertire riga/colonna in colonna/riga (row=riga, c=colonna)
 par(mfrow=c(2,1))
 par(mfrow=c(2,3))
-#2 indica che viene dimezzata la riga rispetto al valore iniziale, è come se fosse 1 mezzo, mentre 3 indica che la colonna viene resa 1 terzo rispetto l'originale
+# 2 indica che viene dimezzata la riga rispetto al valore iniziale, è come se fosse 1 mezzo, mentre 3 indica che la colonna viene resa 1 terzo rispetto l'originale
 # la funzione par imposta o regola i parametri di stampa
 
-#multiframe automatico
+# multiframe automatico
 install.packages("GGally")
 library(GGally)
-(dà errore, richiede che si elimini un file della win-library precedente per fare installare la GGally)
+
 
 meuse
 head(meuse)
 
-coordinates(meuse)=~x+y  
+coordinates(meuse)=~x+y  ERRORE
 
 plot(meuse)
 
