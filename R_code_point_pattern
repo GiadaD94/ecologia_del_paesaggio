@@ -49,7 +49,7 @@ ggplot(mpg,aes(x=displ,y=hwy)) + geom_point()
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_line()
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_polygon()
 
-#ggplot di covid, funzione size= restituisce un vettore numerico di lunghezza (x) ????????
+#ggplot di covid, funzione size= restituisce un vettore numerico di lunghezza (x) 
 ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_point()
 ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_polygon()
 
