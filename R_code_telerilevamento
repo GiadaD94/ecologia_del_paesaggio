@@ -1,13 +1,13 @@
-#carico lab come working directory
+# carico lab come working directory
 setwd("C:/lab/)
 
-#installazione pacchetti
+# installazione pacchetti
 install.packages("raster") 
 install.packages("rgdal") 
 install.packages("ggplot2")
 install.packages("RStoolbox")
 
-#carico dati dei pacchetti
+# carico dati dei pacchetti
 library(raster)
 library(rgdal)
 library(ggplot2)
@@ -27,7 +27,7 @@ plot(p224r63_2011)
 # B6: thermal infrared
 # B7: medium infrared
 
-#modifica i grafici in scala nero-grigio
+# modifica i grafici in scala nero-grigio
 cl <- colorRampPalette(c('black','grey','light grey'))(100)
 plot(p224r63_2011, col=cl)
 
@@ -39,7 +39,7 @@ plot(p224r63_2011, col=cllow)
 names(p224r63_2011)
 # viene come risultato:  [1] "B1_sre" "B2_sre" "B3_sre" "B4_sre" "B5_sre" "B6_bt"  "B7_sre"
 
-#scegliamo scala colori dei grafici (b=blue)
+# scegliamo scala colori dei grafici (b=blue)
 clb <- colorRampPalette(c('dark blue','blue','light blue'))(100)
 
 # plottiamo usando il nome accorciato B1_sre, con il simbolo $ che lega la banda al dataset
@@ -80,7 +80,7 @@ plotRGB(p224r63_2011,r=3,g=2,b=1)
 # stretch_dfr() return data frame using row-binding
 plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
 
-#usando colori vicino infrarosso
+# usando colori vicino infrarosso
 plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
 
 # salvataggio file
