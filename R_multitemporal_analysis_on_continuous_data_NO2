@@ -19,10 +19,10 @@ EN11 <- brick("EN_0011.png")
 EN12 <- brick("EN_0012.png")
 EN13 <- brick("EN_0013.png")
 
-# brick
-# writeRaster(EN01[[3]], "snow2000r.tif")
 
-errore???????????????
+writeRaster(EN01[[3]], ("snow2000r.tif")
+
+
 
 
 # use .red to export the data: prepare the set
@@ -40,7 +40,7 @@ EN11 <- raster("EN_0011.png")
 EN12 <- raster("EN_0012.png")
 EN13 <- raster("EN_0013.png")
 
-cl <- colorRampPalette(c('red','orange','yellow'))(100) # 
+cl <- colorRampPalette(c('red','orange','yellow'))(100) 
 
 par(mfrow=c(1,2))
 plot(EN01, col=cl)
@@ -49,10 +49,10 @@ plot(EN13, col=cl)
 # close the window
 
 difno2 <- EN13-EN01
-cldif <- colorRampPalette(c('blue','black','yellow'))(100) # 
+cldif <- colorRampPalette(c('blue','black','yellow'))(100) 
 plot(difno2, col=cldif)
 
-cl <- colorRampPalette(c('red','orange','yellow'))(100) # 
+cl <- colorRampPalette(c('red','orange','yellow'))(100) 
 
 # PLOT ALL THE DATA
 # video like
