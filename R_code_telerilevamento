@@ -69,7 +69,7 @@ clnir <- colorRampPalette(c('red','orange','yellow'))(100)
 plot(p224r63_2011$B4_sre, col=clnir)
 
 
-## dev.off()  ???????
+## dev.off() 
 
 # usiamo i tre colori naturali o bande (R, G, B) R = banda del rosso, G = banda del verde, B = banda del blu
 # B1: blue - 1   B2: green - 2   B3: red - 3   B4: near infrared (nir) - 4
