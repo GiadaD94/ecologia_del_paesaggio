@@ -1,31 +1,32 @@
+# installare pacchetto sp (fornisce classi fondamentali degli oggetti spaziali)
 install.packages("sp")
 
-#inserisci library (=modalità di rappresentazione dei dati, la library richiama i dati del pacchetto)
+# inserisci library (=modalità di rappresentazione dei dati, la library richiama i dati del pacchetto)
 library(sp)
 
-#inserire dati da utilizzare
+# inserire dati da utilizzare
 data(meuse)
 head(meuse)
 
-#coordinate del dataset
+# coordinate del dataset
 coordinates(meuse)=~x+y
 
-#inserire spazialmente i dati di zinco
+# inserire spazialmente i dati di zinco
 spplot(meuse,"zinc")
 
-#spplot dei dati di rame
+# spplot dei dati di rame
 ssplot(meuse,"copper")
 
-#visualizzare altri nomi da utilizzare da meuse
+# visualizzare altri nomi da utilizzare da meuse
 names(meuse)
 
-#esprimere i dati come bubbles
+# esprimere i dati come bubbles
 bubble(meuse,"zinc")
 
 bubble(meuse,"copper",col="red",cex=2)
-#errore in cex: da usare per altri argomenti)
+# errore in cex: da usare per altri argomenti)
 
-#creazione di un array: con nome della x (foram) e nome della y (carbon),poi messi in relazione con plot
+# creazione di un array: con nome della x (foram) e nome della y (carbon),poi messi in relazione con plot
 foram <- c(10, 20, 35, 55, 67, 80)
 carbon <- c(5, 15, 30, 70, 85, 99)
 plot(foram, carbon, col="green", cex=2, pch=19)
@@ -35,17 +36,17 @@ ciao <- c(2,4,7)
 bye <- c(5,6,7)
 plot(ciao,bye, col="yellow", cex=3, pch=16)
 
-#creazione dataframe, relazione tra variabili, modifica etichette x e y
+# creazione dataframe, relazione tra variabili, modifica etichette x e y
 Studenti <- data.frame ("nome"=c("Luca","Giada","Elisa"),"Età"=c(20,26,23))
 Studenti
 plot(Studenti$nome,Studenti$Età)
 plot(Studenti$nome,Studenti$Età,xlab="Name",ylab="Age")
 
-#Dati dall'esterno sul covid-19
-#creare cartella su Windows: C:/lab, andando su questo pc, disco locale c, nuova cartella nominata lab, poi la richiamo in R con:
+# Dati dall'esterno sul covid-19
+# creare cartella su Windows: C:/lab, andando su questo pc, disco locale c, nuova cartella nominata lab, poi la richiamo in R con:
 setwd("C:/lab") per Windows
 
-#leggere la tabella
+# leggere la tabella
 covid <- read.table
 covid <- read.table("covid_agg.csv",head=TRUE)
 head(covid)
