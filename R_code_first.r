@@ -28,13 +28,15 @@ plot(meuse$cadmium,meuse$lead)
 attach(meuse)
 plot(cadmium,lead)
 
-# grafico migliorato (pch : da cercare su google per prendere i caratteri, cex sta per character exageration, quindi aumento dimensioni del carattere, mentre col sta per colore)
+# grafico migliorato (pch : da cercare su google per prendere i caratteri, cex sta per character exageration, 
+# quindi aumento dimensioni del carattere, mentre col sta per colore)
 plot(cadmium,lead,pch=17,cex=3,col="yellow")
 
-# pairs è funzione che comprende tanti plot ovvero fra tutte le variabili possibili del data set, si apre un subset con la quadra seguita dalla virgola, i due punti indicano fino a che punto si arriva. La tilde si esegue con Alt+126
+# pairs è funzione che comprende tanti plot ovvero fra tutte le variabili possibili del data set, 
+# si apre un subset con la quadra seguita dalla virgola, i due punti indicano fino a che punto si arriva. La tilde si esegue con Alt+126
 pairs(~cadmium+copper+lead,data=meuse)
 pairs(meuse[,3:6])
 pairs(meuse[,3:6],col="green")
 
-# main"nomegrafico"
+# main = "nomegrafico"
 main=primo pairs
