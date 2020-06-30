@@ -11,22 +11,26 @@ d2c <- raster("d2c.tif")
 # land cover 1= agriculture, land cover 2=forest
 d1c.cat.for <- reclassify(d1c, cbind(1, NA))
 
+# install packages igraph
+install.packages("igraph")
+library(igraph)
 d1c.forest.patches <- clump(d1c.cat.for)
 cl <- colorRampPalette(c('dark blue','blue','green','orange','yellow','red'))(100) # 
 plot(d1c.forest.patches,col=cl)
 
-cellStats(d1c.forest.patches, max)#number of patches identified
+# number of patches identified
+cellStats(d1c.forest.patches, max)
 
 # Exercise: repeat the whole process for d2c
 # land cover 1= agriculture, land cover 2=forest
 d2c.cat.for <- reclassify(d2c, cbind(1, NA))
 
 d2c.forest.patches <- clump(d2c.cat.for)
-cl <- colorRampPalette(c('dark 
-blue','blue','green','orange','yellow','red'))(100) # 
+cl <- colorRampPalette(c('dark blue','blue','green','orange','yellow','red'))(100)  
 plot(d2c.forest.patches,col=cl)
 
-cellStats(d2c.forest.patches, max)#number of patches identified
+# number of patches identified
+cellStats(d2c.forest.patches, max)
 
 # plot results:
 time <- c("Before deforestation","After deforestation")
