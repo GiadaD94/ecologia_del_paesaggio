@@ -9,6 +9,7 @@ library(ncdf4)
 library(raster)
 
 snowmay <- raster("c_gls_SCE500_202005180000_CEURO_MODIS_V1.0.1.nc")
+errore??
 cl <- colorRampPalette(c('darkblue','blue','light blue'))(100) 
 
 # Exercise: plot snow cover with the cl palette
