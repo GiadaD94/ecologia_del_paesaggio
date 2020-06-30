@@ -13,7 +13,7 @@ d1c <- raster("d1c.tif")
 d2c <- raster("d2c.tif")
 
 par(mfrow=c(1,2))
-cl <- colorRampPalette(c('black','green'))(100) # 
+cl <- colorRampPalette(c('black','green'))(100) 
 plot(d1c,col=cl)
 plot(d2c,col=cl)
 
@@ -22,7 +22,7 @@ d1c.for <- reclassify(d1c, cbind(1,NA))
 d2c.for <- reclassify(d2c, cbind(1,NA))
 
 par(mfrow=c(1,2))
-cl <- colorRampPalette(c('black','green'))(100) # 
+cl <- colorRampPalette(c('black','green'))(100)  
 plot(d1c,col=cl)
 plot(d1c.for, col=cl)
 
@@ -42,7 +42,7 @@ d2c.for.patches <- clump(d2c.for)
 # d2c.for.pacthes <- raster("d2c.for.patches.tif")
 
 # Exercise: plottare entrambe le mappe una accanto all'altra
-clp <- colorRampPalette(c('dark blue','blue','green','orange','yellow','red'))(100) # 
+clp <- colorRampPalette(c('dark blue','blue','green','orange','yellow','red'))(100) 
 par(mfrow=c(1,2))
 plot(d1c.for.patches, col=clp)
 plot(d2c.for.patches, col=clp)
