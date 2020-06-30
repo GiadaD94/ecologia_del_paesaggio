@@ -1,10 +1,9 @@
 # SDM package - Babak Naimi
 
+install.packages("sdm")
 library(sdm)
 library(raster)
 library(rgdal)
-
-install.packages("sdm")
 
 # species
 file <- system.file("external/species.shp", package="sdm") 
@@ -22,46 +21,44 @@ points(species[species$Occurrence == 0,],col='red',pch=16)
 # model
 path <- system.file("external", package="sdm") 
 
-#predictors
-lst <- list.files(path=path,pattern='asc$',full.names = T) #
+# predictors
+lst <- list.files(path=path,pattern='asc$',full.names = T) 
 preds <- stack(lst) 
 
 preds
 
 
 plot(preds)
-plot(preds[[4]]) # only plot the 4th layer
+# only plot the 4th layer
+plot(preds[[4]])
 # plot(species,add=T)
 points(species[species$Occurrence == 1,],col='blue',pch=16)
 points(species[species$Occurrence == 0,],col='red',pch=16)
 
 
 # model
-# d <- sdmData(formula=Occurrence~., train=species, predictors=preds)
-# d
-
+d <- sdmData(formula=Occurrence~., train=species, predictors=preds)
+d
 d <- sdmData(train=species, predictors=preds)
-# You may also want to take part of variables:
 
-# d <- sdmData(formula=Occurrence~precipitation+temperature, train=species, predictors=preds)
+# take part of variables:
 
+d <- sdmData(formula=Occurrence~precipitation+temperature, train=species, predictors=preds)
 m1 <- sdm(Occurrence~elevation+precipitation+temperature+vegetation,data=d,methods=c('glm'))
-
-# m1
+m1
 
 p1 <- predict(m1,newdata=preds)
 # ,filename='p1.img') 
 
-
-clp <- colorRampPalette(c('darkblue','orange','red','yellow'))(100) # specifying a color scheme
+# specifying a color scheme
+clp <- colorRampPalette(c('darkblue','orange','red','yellow'))(100) 
 plot(p1,col=clp)
 
 points(species[species$Occurrence == 1,],col='blue',pch=16)
 points(species[species$Occurrence == 0,],col='red',pch=16)
 
 m2 <- sdm(Occurrence~elevation+precipitation+temperature+vegetation,data=d,methods=c('gam'))
-
-# m1
+m2
 
 p2 <- predict(m2,newdata=preds)
 # ,filename='p1.img') 
