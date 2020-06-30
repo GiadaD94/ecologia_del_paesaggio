@@ -1,0 +1,39 @@
+# patches
+library(raster)
+
+setwd("~/lab")
+# writeRaster(d1c$map,"d1c.tif")
+# writeRaster(d2c$map,"d2c.tif")
+
+d1c <- raster("d1c.tif")
+d2c <- raster("d2c.tif")
+
+# land cover 1= agriculture, land cover 2=forest
+d1c.cat.for <- reclassify(d1c, cbind(1, NA))
+
+d1c.forest.patches <- clump(d1c.cat.for)
+cl <- colorRampPalette(c('dark blue','blue','green','orange','yellow','red'))(100) # 
+plot(d1c.forest.patches,col=cl)
+
+cellStats(d1c.forest.patches, max)#number of patches identified
+
+# Exercise: repeat the whole process for d2c
+# land cover 1= agriculture, land cover 2=forest
+d2c.cat.for <- reclassify(d2c, cbind(1, NA))
+
+d2c.forest.patches <- clump(d2c.cat.for)
+cl <- colorRampPalette(c('dark 
+blue','blue','green','orange','yellow','red'))(100) # 
+plot(d2c.forest.patches,col=cl)
+
+cellStats(d2c.forest.patches, max)#number of patches identified
+
+# plot results:
+time <- c("Before deforestation","After deforestation")
+npatches <- c(568,1920)
+
+output <- data.frame(time,npatches)
+attach(output)
+
+library(ggplot2)
+ggplot(output, aes(x=time, y=npatches, color="red")) + geom_bar(stat="identity", fill="white")
