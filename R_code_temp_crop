@@ -1,0 +1,32 @@
+# Crop an image
+
+library(raster)
+library(RStoolbox)
+
+setwd("~/lab/snow")
+
+rlist <- list.files(pattern="snow")
+rlist 
+
+#save raster into list
+#con lappy
+list_rast=lapply(rlist, raster)
+snow.multitemp <- stack(list_rast)
+
+# plot to see italian coordinates
+plot(snow.multitemp$snow2010r)
+  
+# zoom
+zoom(snow.multitemp$snow2010r, ext=drawExtent())
+
+# crop
+crop(snow.multitemp$snow2010r, drawExtent())
+
+# crop the whole stack
+plot(snow.multitemp$snow2010r)
+snow.multitemp.crop <- crop(snow.multitemp, drawExtent())
+
+plot(snow.multitemp.crop)
+
+# example: boxplot
+boxplot(snow.multitemp.crop,horizontal=T,axes=T,outline=F)
