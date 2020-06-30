@@ -1,16 +1,13 @@
 library(raster)
 # setwd("~/lab/esa_no2")
-
-ERRORE : non posso cambiare directory di lavoro
 # put all files into the folder
 
 setwd("C:/lab/esa_no2")
 
 rlist=list.files(pattern=".png", full.names=T)
 
-#save raster into list con lapply
+# save raster into list con lapply
 list_rast=lapply(rlist, raster)
-ERRORE: unexpected symbol
 
 EN <- stack(list_rast)
 plot(EN)
