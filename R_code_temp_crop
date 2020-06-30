@@ -3,13 +3,12 @@
 library(raster)
 library(RStoolbox)
 
-setwd("~/lab/snow")
+setwd("C:/lab/snow")
 
 rlist <- list.files(pattern="snow")
 rlist 
 
-#save raster into list
-#con lappy
+# save raster into list con lappy
 list_rast=lapply(rlist, raster)
 snow.multitemp <- stack(list_rast)
 
