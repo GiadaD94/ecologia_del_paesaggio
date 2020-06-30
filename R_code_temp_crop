@@ -11,6 +11,7 @@ rlist
 # save raster into list con lappy
 list_rast=lapply(rlist, raster)
 snow.multitemp <- stack(list_rast)
+errore ??
 
 # plot to see italian coordinates
 plot(snow.multitemp$snow2010r)
