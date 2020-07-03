@@ -2,9 +2,7 @@
 
 library(raster)
 
-setwd("~/lab/snow/") # Linux
-# setwd("C:/lab/snow/") # Windows
-# setwd("/Users/nome_utente/Desktop/lab/snow/") # Mac
+setwd("C:/lab/snow/")
 
 # Exercise: upload the whole snow set
 
@@ -15,9 +13,8 @@ rlist
 # save raster into list con lappy
 list_rast <- lapply(rlist, raster)
 snow.multitemp <- stack(list_rast)
-errore ???
 
-clb <- colorRampPalette(c('dark blue','blue','light blue'))(100) # 
+clb <- colorRampPalette(c('dark blue','blue','light blue'))(100)
 plot(snow.multitemp,col=clb)
 
 # zoom
