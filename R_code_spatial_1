@@ -1,5 +1,6 @@
 # R spaziale: funzioni spaziali in Ecologia del Paesaggio
 
+# installa pacchetto sp: fornisce classi e metodi per gestire i dati spaziali in R
 install.packages("sp")
 
 # con library (sp) richiamiamo il pacchetto
@@ -12,6 +13,7 @@ data(meuse)
 head(meuse)
 
 # plot tra variabile cadmium e lead (elementi in meuse)
+# plot() funzione che mette in relazione delle variabili tra loro
 plot(meuse$cadmium,meuse$lead)
 
 # attach per allegare dataframe ed eliminare meuse$
@@ -25,15 +27,17 @@ plot(cadmium,lead)
 # cambiare etichette del grafico, e titolo con main
 plot(cadmium,lead,xlab="rame",ylab="zinc",main="grafico")
 
-# multiframe o multipanel, funzione par consente di eseguire tra parentesi diversi parametri come il multiframe (MF), 
+# multiframe o multipanel
+# funzione par consente di eseguire tra parentesi diversi parametri come il multiframe (MF)
+# par() può essere usato per impostare o interrogare parametri grafici
 # il primo numero rappresenta la riga e il secondo la colonna. 
 par(mfrow=c(1,2))
 
 # invertire riga/colonna in colonna/riga (row=riga, c=colonna)
 par(mfrow=c(2,1))
 par(mfrow=c(2,3))
-# 2 indica che viene dimezzata la riga rispetto al valore iniziale, è come se fosse 1 mezzo, 
-# mentre 3 indica che la colonna viene resa 1 terzo rispetto l'originale
+# 2 indica che viene dimezzata la riga rispetto al valore iniziale, è come se fosse 1/2
+# mentre 3 indica che la colonna viene resa 1/3 rispetto l'originale
 # la funzione par imposta o regola i parametri di stampa
 
 # multiframe automatico
@@ -44,15 +48,20 @@ library(GGally)
 meuse
 head(meuse)
 
-coordinates(meuse)=~x+y  ERRORE
+coordinates(meuse)=~x+y  
 
 plot(meuse)
 
-#funzione spplot per plottare o organizzare i dati spazialmente
+# funzione spplot per plottare o organizzare i dati spazialmente
 spplot(meuse,"zinc")
 
+# installare pacchetto rgdal: Geospatial Data Abstraction Library
+# rgdal: funzioni per importare/esportare dati spaziali in vari formati
+# raster: rappresentazioni di dati raster spaziali
 install.packages(rgdal)
 install.packages(raster)
+
+
 
 
 
