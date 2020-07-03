@@ -1,10 +1,17 @@
 library(raster)
 
-setwd("~/lab/")
+setwd("C:/lab/")
 
-# EN <- stack(c("EN_0001.png","EN_0002.png","EN_0003.png","EN_0004.png","EN_0005.png","EN_0006.png","EN_0007.png","EN_0008.png","EN_0009.png","EN_0010.png","EN_0011.png","EN_0012.png","EN_0013.png"))
+EN <- stack(c("EN_0001.png","EN_0002.png","EN_0003.png","EN_0004.png","EN_0005.png","EN_0006.png","EN_0007.png","EN_0008.png","EN_0009.png","EN_0010.png","EN_0011.png","EN_0012.png","EN_0013.png"))
+# stack: concatena più vettori in un singolo vettore insieme a un fattore che indica l'origine di ciascuna osservazione
+# trasforma i dati disponibili come colonne separate in un frame di dati o in un elenco in un'unica colonna 
+# multipli layers da più file separati
+# unstack inverte questa funzione
 
 # brick
+# un RasterBrick è un oggetto raster multistrato
+# multipli layers da un singolo file
+
 EN01 <- brick("EN_0001.png")
 EN02 <- brick("EN_0002.png")
 EN03 <- brick("EN_0003.png")
@@ -21,8 +28,6 @@ EN13 <- brick("EN_0013.png")
 
 
 writeRaster(EN01[[3]], ("snow2000r.tif")
-
-
 
 
 # use .red to export the data: prepare the set
