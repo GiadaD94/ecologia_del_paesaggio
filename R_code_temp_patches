@@ -1,7 +1,7 @@
 # patches
 library(raster)
 
-setwd("~/lab")
+setwd("C:/lab")
 # writeRaster(d1c$map,"d1c.tif")
 # writeRaster(d2c$map,"d2c.tif")
 
