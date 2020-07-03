@@ -3,7 +3,7 @@
 setwd("C:/lab/")
 library(raster)
 
-# install.packages("RStoolbox")
+install.packages("RStoolbox")
 library(RStoolbox)
 
 defor1 <- brick("defor1_.jpg")
@@ -36,9 +36,9 @@ cl <- colorRampPalette(c('green','black'))(100)
 plot(d1c$map, col=cl)
 
 # esempio sul significato del $
-# mappageologica <- geomap(im_sat,nClasses=....)
-# plot(mappageologica$lito)
-# plot(mappageologica$lineaments)
+mappageologica <- geomap(im_sat,nClasses=....)
+plot(mappageologica$lito)
+plot(mappageologica$lineaments)
 
 # classificazione di defor2
 # Exercise: classificare con due classi l'immagine satellitare defor2
@@ -68,8 +68,6 @@ percent1 <- freq(d1c$map) * 100 / totd1
 # foreste: 89.1
 # aree aperte: 10.9
 
-#---- 
-
 freq(d2c$map)
 # aree aperte: 165055
 # foreste: 177671
@@ -83,8 +81,6 @@ percent2 <- freq(d2c$map) * 100 / totd2
 # percent
 # aree aperte: 48.2
 # foreste: 51.8
-
-#-----
 
 cover <- c("Agriculture","Forest")
 before <- c(10.9,89.1)
