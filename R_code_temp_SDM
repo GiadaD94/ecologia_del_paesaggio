@@ -1,4 +1,5 @@
 # SDM package - Babak Naimi
+# SDM = species distribution modelling
 
 install.packages("sdm")
 library(sdm)
