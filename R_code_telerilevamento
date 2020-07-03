@@ -1,8 +1,10 @@
 # carico lab come working directory
 setwd("C:/lab/)
 
-# installazione pacchetti raster (raster= set of numbers in a matrix), rgdal, ggplot, 
-# RStoolbox (fornisce funzioni per remote sensing data analysis)
+# installazione pacchetto raster (raster= set of numbers in a matrix)
+# installazione pacchetto rgdal
+# installazione pacchetto ggplot
+# installazione pacchetto RStoolbox (fornisce funzioni per remote sensing data analysis)
 install.packages("raster") 
 install.packages("rgdal") 
 install.packages("ggplot2")
@@ -73,13 +75,16 @@ plot(p224r63_2011$B4_sre, col=clnir)
 # chiudo il plot con:
 dev.off() 
 
-# usiamo i tre colori naturali o bande (R, G, B) R = banda del rosso, G = banda del verde, B = banda del blu
+# usiamo i tre colori naturali o bande (R, G, B) 
+# R = banda del rosso 
+# G = banda del verde
+# B = banda del blu
 # B1: blue - 1   B2: green - 2   B3: red - 3   B4: near infrared (nir) - 4
 plotRGB(p224r63_2011,r=3,g=2,b=1)
 
-# stretch() always returns a vector of numerics
-# stretch_lst() returns a list
-# stretch_dfr() return data frame using row-binding
+# stretch() restituisce sempre un vettore di numeri
+# stretch_lst() restituisce una lista
+# stretch_dfr() restituisce il frame di dati usando l'associazione di righe
 plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
 
 # usando colori vicino infrarosso
