@@ -1,20 +1,20 @@
 # codice per analizzare i pattern legati ai punti
-# installare pacchetto ggplot2
-# installare pacchetto Spatstat 
+# installare pacchetto ggplot2: per la creazione grafica, le variabili all'estetica
+# installare pacchetto Spatstat: per l'analisi dei modelli/configurazioni di punti spaziali
 
 install.packages("ggplot2")
 install.packages("spatstat")
 
-#allego library
+# richiamo i pacchetti
 
 library(ggplot2)
 library(spatstat)
 
 
-#setwd("~:/lab/") per windows
-setwd("C/lab")
+# setwd("~:/lab/") per windows
+setwd("C:/lab")
 
-#importare dati
+# importare dati
 covid <- read.table("covid_agg.csv", head=T)
 head(covid)
 
@@ -24,8 +24,9 @@ attach(covid)
 
 plot(country,cases)
 
-# modifica delle etichette, funzione las = valore numerico che indica l'orientamento delle etichette o altro testo aggiunto al plot
-# parallele all'asse ( 0), orizzontale (1), perpendicolare all'asse (2), verticale (3)
+# modifica delle etichette
+# funzione las = valore numerico che indica l'orientamento delle etichette
+# parallele all'asse (0), orizzontale (1), perpendicolare all'asse (2), verticale (3)
 
 # parallel labels
 plot(covid$country,covid$cases,las=0)
@@ -48,19 +49,23 @@ plot(covid$country,covid$cases,las=3,cex.lab=0.5, cex.axis=0.5)
 data(mpg)
 head(mpg)
 
-# inserimento dati, funzione aes= funzione di quotazione, i suoi input sono quotati per essere valutati nel contesto dei dati. 
-è possibile denominare direttamente le variabili del dataframe
+# inserimento dati
+# funzione aes= di quotazione: i suoi input sono quotati per essere valutati nel contesto dei dati
+# è possibile denominare direttamente le variabili del dataframe
 # tipo di geometria (a punti, linee, poligoni)
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_point()
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_line()
 ggplot(mpg,aes(x=displ,y=hwy)) + geom_polygon()
 
-# ggplot di covid, funzione size= restituisce un vettore numerico di lunghezza (x) 
+# ggplot di covid
+# funzione size: restituisce un vettore numerico di lunghezza (x) 
 ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_point()
 ggplot(covid,aes(x=lon,y=lat,size=cases)) + geom_polygon()
 
 # density -> esprime la stima della densità di kernel
-# creare dataset for spatstat, utilizzare funzioni ppp per creare a spatial point pattern, c sta per colonna
+# creare dataset for spatstat
+# utilizzare funzioni ppp per creare a spatial point pattern
+# c sta per colonna
 attach(covid)
 covids <- ppp(lon, lat, c(-180,180), c(-90,90))
 
@@ -89,7 +94,8 @@ cl <- colorRampPalette(c("blue","green")) (100)
 cl <- colorRampPalette(c("blue","light blue","light green","green")) (100)
 plot(d, col=cl)
 
-# installare pacchetto rgdal (fornisce funzioni per importare ed esportare dati spaziali in una varietà di formati)
+# installare pacchetto rgdal 
+# fornisce funzioni per importare ed esportare dati spaziali in una varietà di formati
 install.packages("rgdal")
 library(rgdal)
 
