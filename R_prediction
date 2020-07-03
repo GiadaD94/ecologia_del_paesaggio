@@ -1,4 +1,5 @@
 # prediction
+# regressione lineare = prevedere un valore di risultato sulla base di una o più variabili predittive
 
 require(raster)
 require(rgdal)
