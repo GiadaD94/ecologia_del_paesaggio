@@ -35,8 +35,8 @@ library(igraph)
 d1c.for.patches <- clump(d1c.for)
 d2c.for.patches <- clump(d2c.for)
 
-writeRaster(d1c.for.patches, "d1c.for.patches.tif")
-writeRaster(d2c.for.patches, "d2c.for.patches.tif")
+# writeRaster(d1c.for.patches, "d1c.for.patches.tif")
+# writeRaster(d2c.for.patches, "d2c.for.patches.tif")
 d1c.for.patches <- raster("d1c.for.patches.tif")
 d2c.for.pacthes <- raster("d2c.for.patches.tif")
 
