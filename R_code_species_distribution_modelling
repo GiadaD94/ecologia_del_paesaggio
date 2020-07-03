@@ -1,7 +1,7 @@
 # R code Species Distribution Modelling
 
-# install.packages("sdm")
-# install.packages("rgdal")
+install.packages("sdm")
+install.packages("rgdal")
 library(sdm)
 library(raster)
 library(rgdal)
