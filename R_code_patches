@@ -2,12 +2,11 @@
 
 library(raster)
 # install.packages("igraph")
+# igraph: per generare grafici di grandi dimensioni, grafici casuali e regolari
 library(igraph) # for patches
 library(ggplot2) # for the final output plot
 
-setwd("~/lab/")
-# setwd("/Users/utente/lab") #mac
-# setwd("C:/lab/") # windows
+setwd("C:/lab/")
 
 d1c <- raster("d1c.tif")
 d2c <- raster("d2c.tif")
@@ -32,14 +31,14 @@ plot(d2c)
 
 # creating patches
 install.packages("igraph")
-library(igraph) # for patches
+library(igraph) 
 d1c.for.patches <- clump(d1c.for)
 d2c.for.patches <- clump(d2c.for)
 
-# writeRaster(d1c.for.patches, "d1c.for.patches.tif")
-# writeRaster(d2c.for.patches, "d2c.for.patches.tif")
-# d1c.for.patches <- raster("d1c.for.patches.tif")
-# d2c.for.pacthes <- raster("d2c.for.patches.tif")
+writeRaster(d1c.for.patches, "d1c.for.patches.tif")
+writeRaster(d2c.for.patches, "d2c.for.patches.tif")
+d1c.for.patches <- raster("d1c.for.patches.tif")
+d2c.for.pacthes <- raster("d2c.for.patches.tif")
 
 # Exercise: plottare entrambe le mappe una accanto all'altra
 clp <- colorRampPalette(c('dark blue','blue','green','orange','yellow','red'))(100) 
