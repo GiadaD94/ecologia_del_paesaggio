@@ -1,6 +1,5 @@
 ## global fire disturbance 
 # multitemporal global analysis (from 2018 to 2020)
-# multitemporal analysis between continents (from january 2018 to august 2018)
 
 install.packages("raster")
 library(raster)
@@ -79,27 +78,77 @@ plotRGB(global012020r, r=4, g=3, b=2, stretch="Lin")
 
 
 
-# land cover
-
+## multitemporal analysis of land cover
 
 install.packages("RStoolbox")
 library(RStoolbox)
 setwd("C:/lab/")
 global012020 <- brick("c_gls_BA300_QL_202001100000_GLOBE_PROBAV_V1.1.1.tiff")
+
 # landsat bands: 1b, 2g, 3r, 4nir
 plotRGB(global012020,r=4,g=3,b=2,stretch="Lin")
-global012020c <- unsuperClass(global012020, nClasses=4)
-plot(global012020c$map)
-clclass <- colorRampPalette(c('red', 'green', 'blue', 'black'))(100)
-plot(global012020c$map, col=clclass)
-
 global012020c <- unsuperClass(global012020, nClasses=3)
 plot(global012020c$map)
+clclass <- colorRampPalette(c('yellow', 'pink','black'))(100)
+plot(global012020c$map, col=clclass)
 
-global012020c <- unsuperClass(global012020, nClasses=2)
-plot(global012020c$map)
+plotRGB(global012018,r=4,g=3,b=2,stretch="Lin")
+global012018c <- unsuperClass(global012020, nClasses=3)
+plot(global012018c$map)
+clclass <- colorRampPalette(c('yellow', 'pink','black'))(100)
+plot(global012018c$map, col=clclass)
+
+# plot delle due mappe ottenute
+cl <- colorRampPalette(c('yellow','pink','black'))(100)
+par(mfrow=c(2,1))
+plot(global012020c$map, col=cl)
+plot(global012018c$map, col=cl)
+
 
 freq(global012020c$map)
+# value 3= aree non coinvolte da incendi = 3905796
+# value 2= aree coinvolte da incendi = 79435
+totglobal012020 <- 3905796 + 79435
+totglobal012020
+# result: 3985231
+
+percent1 <- freq(global012020c$map) * 100 / totglobal012020
+percent1
+# result:             value      count
+[1,] 2.509265e-05 256.940313
+[2,] 5.018530e-05   1.993235
+[3,] 7.527794e-05  98.006765
+
+
+freq(global012018c$map)
+# value 3= aree non coinvolte da incendi = 3905796
+# value 2= aree coinvolte da incendi = 10239665
+totglobal012018 <- 10239665 + 3905796
+totglobal012018
+# result: 14145461
+
+percent2 <- freq(global012018c$map) * 100 / totglobal012018
+percent2
+# result: value      count
+[1,] 7.069406e-06  0.5615582
+[2,] 1.413881e-05 72.3883442
+[3,] 2.120822e-05 27.6116558
+
+cover <- c("Nofiredisturbance","Firedisturbance")
+before <- c(27.6,72.3)
+after <- c(98,2)
+output <- data.frame(cover,before,after)
+output
+
+library(ggplot2)
+p1<-ggplot(output, aes(x=cover, y=before, color=cover)) + geom_bar(stat="identity", fill="white")
+p2<-ggplot(output, aes(x=cover, y=after, color=cover)) + geom_bar(stat="identity", fill="white")
+install.packages("gridExtra")
+library(gridExtra)
+grid.arrange(p1, p2, nrow = 1)
+
+
+
 
 
 
