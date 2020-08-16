@@ -150,15 +150,54 @@ grid.arrange(p1, p2, nrow = 1)
 
 
 
+library(raster)
 
+setwd("C:/lab/")
+global2018 <- stack(c("c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.tiff","c_gls_BA300_QL_201802100000_GLOBE_PROBAV_V1.0.1.tiff","c_gls_BA300_QL_201803100000_GLOBE_PROBAV_V1.0.1.tiff","c_gls_BA300_QL_201804100000_GLOBE_PROBAV_V1.0.1.tiff","c_gls_BA300_QL_201805100000_GLOBE_PROBAV_V1.0.1.tiff","c_gls_BA300_QL_201806100000_GLOBE_PROBAV_V1.0.1.tiff","c_gls_BA300_QL_201807100000_GLOBE_PROBAV_V1.0.1.tiff","c_gls_BA300_QL_201808100000_GLOBE_PROBAV_V1.0.1.tiff")
+# brick
+globaljanuary <- brick("c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.tiff")                   
+globalfebruary <- brick("c_gls_BA300_QL_201802100000_GLOBE_PROBAV_V1.0.1.tiff")              
+globalmarch <- brick("c_gls_BA300_QL_201803100000_GLOBE_PROBAV_V1.0.1.tiff")
+globalapril <- brick("c_gls_BA300_QL_201804100000_GLOBE_PROBAV_V1.0.1.tiff")
+globalmay <- brick("c_gls_BA300_QL_201805100000_GLOBE_PROBAV_V1.0.1.tiff")
+globaljune <- brick("c_gls_BA300_QL_201806100000_GLOBE_PROBAV_V1.0.1.tiff")
+globaljuly <- brick("c_gls_BA300_QL_201807100000_GLOBE_PROBAV_V1.0.1.tiff")
+globalaugust <- brick("c_gls_BA300_QL_201808100000_GLOBE_PROBAV_V1.0.1.tiff")
 
+cl <- colorRampPalette(c('red','orange','yellow'))(100) 
+par(mfrow=c(1,2))
+plot(globaljanuary, col=cl)
+plot(globalaugust, col=cl)
 
-
-
-
-
-
-
-
-
-
+diffiredisturbance <- globalaugust-globaljanuary
+cldif <- colorRampPalette(c('blue','black','yellow'))(100) 
+plot(diffiredisturbance, col=cldif)
+                    
+cl <- colorRampPalette(c('red','orange','yellow'))(100)     
+                    
+plot(globaljanuary, col=cl)
+plot(globalfebruary, col=cl)
+plot(globalmarch, col=cl)
+plot(globalapril, col=cl)
+plot(globalmay, col=cl)
+plot(globaljune, col=cl)
+plot(globaljuly, col=cl)
+plot(globalaugust, col=cl)
+                
+par(mfrow=c(4,4))
+plot(globaljanuary, col=cl)
+plot(globalfebruary, col=cl)
+plot(globalmarch, col=cl)
+plot(globalapril, col=cl)
+plot(globalmay, col=cl)
+plot(globaljune, col=cl)
+plot(globaljuly, col=cl)
+plot(globalaugust, col=cl)
+                    
+# make a stack
+global2018 <- stack(globaljanuary,globalfebruary,globalmarch,globalapril,globalmay,globaljune,globaljuly,globalaugust)
+global2018
+plot(global2018)
+plotRGB(global2018) 
+boxplot(global2018,horizontal=T,axes=T)
+                                       
