@@ -84,6 +84,8 @@ install.packages("RStoolbox")
 library(RStoolbox)
 setwd("C:/lab/")
 global012020 <- brick("c_gls_BA300_QL_202001100000_GLOBE_PROBAV_V1.1.1.tiff")
+plot(global012020)
+
 
 # landsat bands: 1b, 2g, 3r, 4nir
 plotRGB(global012020,r=4,g=3,b=2,stretch="Lin")
@@ -199,5 +201,5 @@ global2018 <- stack(globaljanuary,globalfebruary,globalmarch,globalapril,globalm
 global2018
 plot(global2018)
 plotRGB(global2018) 
-boxplot(global2018,horizontal=T,axes=T)
+
                                        
