@@ -40,6 +40,7 @@ plotRGB(global012018,r=3,g=2,b=1)
 plotRGB(global012020,r=3,g=2,b=1)
 
 # spectral indices
+# dvi2018 = nir2018-red2018
 # dvi2020 = nir2020-red2020
 
 dvi2018 <- global012018$c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.2 - global012018$c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.1
@@ -64,17 +65,17 @@ plotRGB(global012018, r=4, g=3, b=2, stretch="Lin")
 plotRGB(global012020, r=4, g=3, b=2, stretch="Lin")
 plot(difdvi, col=cldifdvi)
 
-# Changing the grain (resolution)
-global012020r <- aggregate(global012020, fact=10)
+# Changing the grain (lr=lower resolution)
+global012020lr <- aggregate(global012020, fact=10)
 global012020
-global012020r
+global012020lr
 
-plot(global012020r)
-plotRGB(global012020r)
+plot(global012020lr)
+plotRGB(global012020lr)
 
 par(mfrow=c(2,1))
 plotRGB(global012020, r=4, g=3, b=2, stretch="Lin")
-plotRGB(global012020r, r=4, g=3, b=2, stretch="Lin")
+plotRGB(global012020lr, r=4, g=3, b=2, stretch="Lin")
 
 
 
@@ -94,8 +95,11 @@ plot(global012020c$map)
 clclass <- colorRampPalette(c('yellow', 'pink','black'))(100)
 plot(global012020c$map, col=clclass)
 
+
+global012018 <- brick("c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.tiff")
+plot(global012018)
 plotRGB(global012018,r=4,g=3,b=2,stretch="Lin")
-global012018c <- unsuperClass(global012020, nClasses=3)
+global012018c <- unsuperClass(global012018, nClasses=3)
 plot(global012018c$map)
 clclass <- colorRampPalette(c('yellow', 'pink','black'))(100)
 plot(global012018c$map, col=clclass)
@@ -108,8 +112,8 @@ plot(global012018c$map, col=cl)
 
 
 freq(global012020c$map)
-# value 3= aree non coinvolte da incendi = 3905796
-# value 2= aree coinvolte da incendi = 79435
+# value 2= aree a minor disturbo = 3905796
+# value 1= aree a maggior disturbo = 79435
 totglobal012020 <- 3905796 + 79435
 totglobal012020
 # result: 3985231
@@ -123,21 +127,19 @@ percent1
 
 
 freq(global012018c$map)
-# value 3= aree non coinvolte da incendi = 3905796
-# value 2= aree coinvolte da incendi = 10239665
-totglobal012018 <- 10239665 + 3905796
+# value 2= aree a minor disturbo = 
+# value 1= aree a maggior disturbo = 
+totglobal012018 <-  + 
 totglobal012018
-# result: 14145461
+# result: 
 
 percent2 <- freq(global012018c$map) * 100 / totglobal012018
 percent2
 # result: value      count
-[1,] 7.069406e-06  0.5615582
-[2,] 1.413881e-05 72.3883442
-[3,] 2.120822e-05 27.6116558
+
 
 cover <- c("Nofiredisturbance","Firedisturbance")
-before <- c(27.6,72.3)
+before <- c( , )
 after <- c(98,2)
 output <- data.frame(cover,before,after)
 output
