@@ -43,10 +43,10 @@ plotRGB(global012020,r=3,g=2,b=1)
 # dvi2018 = nir2018-red2018
 # dvi2020 = nir2020-red2020
 
-dvi2018 <- global012018$c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.2 - global012018$c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.1
+dvi2018 <- global012018$c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.4 - global012018$c_gls_BA300_QL_201801100000_GLOBE_PROBAV_V1.0.1.3
 plot(dvi2018)
 
-dvi2020 <- global012020$c_gls_BA300_QL_202001100000_GLOBE_PROBAV_V1.1.1.2 - global012020$c_gls_BA300_QL_202001100000_GLOBE_PROBAV_V1.1.1.1
+dvi2020 <- global012020$c_gls_BA300_QL_202001100000_GLOBE_PROBAV_V1.1.1.4 - global012020$c_gls_BA300_QL_202001100000_GLOBE_PROBAV_V1.1.1.3
 plot(dvi2020)
 
 # difdvi 2020 -2018
@@ -73,10 +73,20 @@ global012020lr
 plot(global012020lr)
 plotRGB(global012020lr)
 
+global012018lr <- aggregate(global012018, fact=10)
+global012018
+global012018lr
+
+plot(global012018lr)
+plotRGB(global012018lr)
+
 par(mfrow=c(2,1))
 plotRGB(global012020, r=4, g=3, b=2, stretch="Lin")
 plotRGB(global012020lr, r=4, g=3, b=2, stretch="Lin")
 
+par(mfrow=c(2,1))
+plotRGB(global012020lr,r=4,g=3,b=2,stretch="Lin")
+plotRGB(global012018lr,r=4,g=3,b=2,stretch="Lin")
 
 
 ## multitemporal analysis of land cover
@@ -92,7 +102,7 @@ plot(global012020)
 plotRGB(global012020,r=4,g=3,b=2,stretch="Lin")
 global012020c <- unsuperClass(global012020, nClasses=3)
 plot(global012020c$map)
-clclass <- colorRampPalette(c('yellow', 'pink','black'))(100)
+clclass <- colorRampPalette(c('yellow','pink','black'))(100)
 plot(global012020c$map, col=clclass)
 
 
@@ -101,7 +111,7 @@ plot(global012018)
 plotRGB(global012018,r=4,g=3,b=2,stretch="Lin")
 global012018c <- unsuperClass(global012018, nClasses=3)
 plot(global012018c$map)
-clclass <- colorRampPalette(c('yellow', 'pink','black'))(100)
+clclass <- colorRampPalette(c('yellow','pink','black'))(100)
 plot(global012018c$map, col=clclass)
 
 # plot delle due mappe ottenute
@@ -112,7 +122,7 @@ plot(global012018c$map, col=cl)
 
 
 freq(global012020c$map)
-# value 2= aree a minor disturbo = 3905796
+# value 3= aree a minor disturbo = 3905796
 # value 1= aree a maggior disturbo = 79435
 totglobal012020 <- 3905796 + 79435
 totglobal012020
@@ -127,20 +137,23 @@ percent1
 
 
 freq(global012018c$map)
-# value 2= aree a minor disturbo = 
-# value 1= aree a maggior disturbo = 
-totglobal012018 <-  + 
+# value 2= aree a minor disturbo = 1185408
+# value 1= aree a maggior disturbo = 4183605
+totglobal012018 <- 1185408 + 4183605
 totglobal012018
 # result: 
 
 percent2 <- freq(global012018c$map) * 100 / totglobal012018
 percent2
 # result: value      count
+[1,] 1.862540e-05  77.92131
+[2,] 3.725079e-05  22.07869
+[3,] 5.587619e-05 164.94434
 
 
 cover <- c("Nofiredisturbance","Firedisturbance")
-before <- c( , )
-after <- c(98,2)
+before <- c(165,100)
+after <- c(98,258)
 output <- data.frame(cover,before,after)
 output
 
