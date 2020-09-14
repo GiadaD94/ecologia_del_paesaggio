@@ -165,7 +165,7 @@ library(gridExtra)
 grid.arrange(p1, p2, nrow = 1)
 
 
-
+# multitemporal analysis of land cover during 2018 (from january to august)
 
 library(raster)
 
